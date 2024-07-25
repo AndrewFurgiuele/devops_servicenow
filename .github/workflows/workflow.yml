@@ -5,7 +5,7 @@ on: push
 jobs:
   
   deploy:
-      name: Deploy
+      name: deploy
       runs-on: ubuntu-latest
       steps:     
         - name: ServiceNow Change
