@@ -23,9 +23,6 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Compile
-      run: npm run build
-
     
   changeApproval:
     name: ServiceNow Change Approval
