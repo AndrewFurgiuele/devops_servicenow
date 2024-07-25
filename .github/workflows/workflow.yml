@@ -1,6 +1,6 @@
 name: ServiceNow DevOps Change Automation
 
-on: [push]
+on: push
 
 jobs:
   
