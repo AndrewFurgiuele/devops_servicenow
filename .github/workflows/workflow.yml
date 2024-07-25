@@ -1,0 +1,68 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "greet"
+  greet:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a single command using the runners shell
+    - name: Send greeting
+      run: echo "Hello ${{ inputs.name }}"
+
+
+name: ServiceNow DevOps Change Automation
+  # You may pin to the exact commit or the version.
+  # uses: ServiceNow/servicenow-devops-change@373e092812580f05105089c20129e6efe347c8e5
+  uses: ServiceNow/servicenow-devops-change@v4.0.0
+  with:
+    # ServiceNow Instance URL
+    instance-url: 
+    # Devops Integration User Name
+    devops-integration-user-name: # optional
+    # Devops Integration User Password
+    devops-integration-user-password: # optional
+    # Devops Integration Token
+    devops-integration-token: # optional
+    # Orchestration Tool Id
+    tool-id: 
+    # Display Name of the Job
+    job-name: 
+    # Github Context
+    context-github: 
+    # The max. time in seconds to wait until the action should fail.
+    timeout: # optional, default is 3600
+    # The time in seconds to wait between trying the API.
+    interval: # optional, default is 100
+    # The customized inputs to create change with the requested details.
+    change-request: 
+    # The max. time in seconds to wait until change created.
+    changeCreationTimeOut: # optional, default is 3600
+    # This value will be used to resume or abort the pipeline if the change is not created within the mentioned time period in changeCreationTimeOut. 
+    abortOnChangeCreationFailure: # optional, default is true
+    # This value will be used to resume or abort the pipeline after a timeout has occurred in case a change step is still in a pending state.
+    abortOnChangeStepTimeout: # optional, default is true
+    # The customized inputs to process deployment gate job related change.
+    deployment-gate: # optional
+          
