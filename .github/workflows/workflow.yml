@@ -1,4 +1,4 @@
-name: ServiceNow DevOps Change Automation
+name: ServiceNowDevOpsChangeAutomation
 on:
   workflow_dispatch:
 jobs:
