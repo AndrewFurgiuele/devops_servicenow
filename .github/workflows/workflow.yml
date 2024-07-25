@@ -38,5 +38,7 @@ jobs:
             # This value will be used to resume or abort the pipeline after a timeout has occurred in case a change step is still in a pending state.
             abortOnChangeStepTimeout: true # optional, default is true
             # The customized inputs to process deployment gate job related change.
-            #deployment-gate: # optional
-                
+            #deployment-gate: # option
+        - name: Output of Change Creation
+          run: echo "change-request-number = ${{ steps.create.outputs.change-request-number }} and change-request-sys-id = ${{ steps.create.outputs.change-request-sys-id }} " >> $GITHUB_OUTPUT
+    
