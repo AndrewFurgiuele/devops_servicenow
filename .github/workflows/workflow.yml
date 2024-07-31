@@ -39,4 +39,4 @@ jobs:
             # The customized inputs to process deployment gate job related change.
             #deployment-gate: # option
         - name: Output of Change Creation
-          run: echo "change-request-number = ${{ steps.create.outputs.change-request-number }} and change-request-sys-id = ${{ steps.create.outputs.change-request-sys-id }} " >> $GITHUB_OUTPUT
+          run: echo "change-request-number = ${{ steps.deply.outputs.change-request-number }} and change-request-sys-id = ${{ steps.deploy.outputs.change-request-sys-id }} " >> $GITHUB_OUTPUT
