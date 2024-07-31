@@ -2,15 +2,15 @@ name: ServiceNowDevOpsChangeAutomation
 on:
   workflow_dispatch:
 jobs:
- deploy:
+  deploy:
     name: Deploy
     runs-on: ubuntu-latest
     steps:     
-      - name: ServiceNow DevOps Change Automation
+      - name: ServiceNow Change
         uses: ServiceNow/servicenow-devops-change@v4.0.0
+        id: create
         with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
@@ -21,5 +21,6 @@ jobs:
           changeCreationTimeOut: '3600'
           abortOnChangeCreationFailure: true
           abortOnChangeStepTimeout: true
+          deployment-gate: '{"environment":"deploymentgate","jobName":"Deploy"}'
       - name: Output of Change Creation
         run: echo "change-request-number = ${{ steps.create.outputs.change-request-number }}" >> $GITHUB_OUTPUT
