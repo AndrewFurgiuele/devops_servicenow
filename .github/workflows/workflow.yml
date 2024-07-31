@@ -6,7 +6,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:     
-      - name: ServiceNow Change
+      - name: ServiceNow DevOps Change Automation
         uses: ServiceNow/servicenow-devops-change@v3.0.0
         with:
           devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
