@@ -2,10 +2,17 @@ name: ServiceNowDevOpsChangeAutomation
 on:
   workflow_dispatch:
 jobs:
+  echoTest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo "Test"
+
+
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    steps:     
+    steps:
       - name: ServiceNow Change
         uses: ServiceNow/servicenow-devops-change@v4.0.0
         id: create
